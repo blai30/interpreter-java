@@ -1,5 +1,7 @@
 package interpreter.bytecode;
 
-public abstract class ByteCode {
+import interpreter.VirtualMachine;
 
+public abstract class ByteCode {
+    public abstract void execute(VirtualMachine vm);
 }

@@ -1,5 +1,10 @@
 package interpreter.bytecode;
 
-public class FalseBranchCode extends ByteCode {
+import interpreter.VirtualMachine;
 
+public class FalseBranchCode extends ByteCode {
+    @Override
+    public void execute(VirtualMachine vm) {
+
+    }
 }

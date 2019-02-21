@@ -1,5 +1,10 @@
 package interpreter.bytecode;
 
-public class DumpCode extends ByteCode {
+import interpreter.VirtualMachine;
 
+public class DumpCode extends ByteCode {
+    @Override
+    public void execute(VirtualMachine vm) {
+
+    }
 }
