@@ -22,7 +22,69 @@ public class RunTimeStack {
         // Therefore, there is no way to pass any information about the VM or the bytecode classes into RunTimeStack.
         // As a result, you can’t really do much dumping inside RunTimeStack.dump() except for dumping the state of
         // the RunTimeStack itself. Also, NO BYTECODE CLASS OR SUBCLASS SHOULD BE CALLING DUMP.
+        //
+        // Void function used to dump the current state of the
+        // RuntimeStack. When printing the runtime stack make sure
+        // to include divisions between frames. If a frame is
+        // empty, this must be shown as well.
 
+    }
+
+    public int peek() {
+        // returns the top of the stack without removing the item.
+
+        return 0;
+    }
+
+    public int pop() {
+        // removes an item from the top of the stack and returns
+        // it.
+
+        return 0;
+    }
+
+    public void newFrameAt(int offset) {
+        // creates a new frame in the RuntimeStack class. The
+        // parameter offset is used to denote how many slots down
+        // from the top of RuntimeStack for starting a new frame.
+
+    }
+
+    public void popFrame() {
+        // we pop the top frame when we return from a function.
+        // Before popping, the function’s return value is at the
+        // top of the stack, so we’ll save the value, then pop the
+        // top frame and then push the return value back onto the
+        // stack. It is assumed return values are at the top of
+        // the stack.
+
+    }
+
+    public int store(int offset) {
+        // Used to store values into variables. Store will pop the
+        // top value of the stack and replace the value at the
+        // given offset in the current frame. The value stored is
+        // returned.
+
+        return 0;
+    }
+
+    public int load(int offset) {
+        // Used to load variables onto the RuntimeStack from a
+        // given offset within the current frame. This means we
+        // will go to the offset in the current frame, copy the
+        // value and push it to the top of the stack. No values
+        // should be removed with load.
+
+        return 0;
+    }
+
+    public Integer push(Integer val) {
+        // Used to load literal values onto the RuntimeStack. For
+        // example, LIT 5 or LIT 0 will call push with val being 5
+        // or val being 0.
+
+        return null;
     }
     
 }
