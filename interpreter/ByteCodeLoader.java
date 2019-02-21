@@ -18,6 +18,7 @@ public class ByteCodeLoader extends Object {
     public ByteCodeLoader(String file) throws IOException {
         this.byteSource = new BufferedReader(new FileReader(file));
     }
+
     /**
      * This function should read one line of source code at a time.
      * For each line it should:

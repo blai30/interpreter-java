@@ -21,12 +21,12 @@ public class VirtualMachine {
         return runStack.pop();
     }
 
-    public void executeProgram(){
+    public void executeProgram() {
         pc = 0;
         runStack = new RunTimeStack();
         returnAddrs = new Stack<Integer>();
         isRunning = true;
-        while(isRunning){
+        while(isRunning) {
             ByteCode code = program.getCode(pc);
             code.execute(this);
             //runStack.dump(); // Used to dump runstack state.
