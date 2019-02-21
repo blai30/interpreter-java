@@ -1,6 +1,7 @@
 package interpreter;
 
 import java.util.ArrayList;
+import interpreter.bytecode.ByteCode;
 
 public class Program {
 
