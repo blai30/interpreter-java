@@ -29,6 +29,15 @@ public class ByteCodeLoader extends Object {
      *      the newly created ByteCode instance via the init function.
      */
     public Program loadCodes() {
-       return null;
+        Program loadedProgram = new Program();
+        String token;
+
+        try {
+            token = byteSource.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return loadedProgram;
     }
 }

@@ -3,6 +3,7 @@ package interpreter;
 import java.util.ArrayList;
 import java.util.Stack;
 
+// Comments for each method is taken directly from theinterpreter.pdf
 public class RunTimeStack {
 
     private ArrayList<Integer> runTimeStack;
