@@ -10,6 +10,8 @@ public class VirtualMachine {
     private int pc;
     private boolean isRunning;
 
+    private boolean dumpFlag;
+
     protected VirtualMachine(Program program) {
         this.program = program;
     }
