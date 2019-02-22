@@ -4,6 +4,11 @@ import interpreter.VirtualMachine;
 
 public class GotoCode extends ByteCode {
     @Override
+    public void init(String[] args) {
+
+    }
+
+    @Override
     public void execute(VirtualMachine vm) {
 
     }
