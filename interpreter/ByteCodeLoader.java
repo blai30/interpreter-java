@@ -35,33 +35,25 @@ public class ByteCodeLoader extends Object {
      */
     public Program loadCodes() {
         Program loadedProgram = new Program();
-        String byteCodeLine;
+        String fileLine;
 
         try {
-            while ((byteCodeLine = byteSource.readLine()) != null) {
-                // Tokenize line into byte code and arguments if there are any
-                // [0] = byte code class key, [1] = non-tokenized string of arguments if there are any
-                String[] tokenizedLine = byteCodeLine.split(" ", 2);
+            while ((fileLine = byteSource.readLine()) != null) {
+                // Tokenize line into an ArrayList of strings, the first token will be the byte code class key
+                ArrayList<String> tokens = new ArrayList<>(Arrays.asList(fileLine.split(" ")));
 
-                // Store byte code class key into string
-                String classKey = tokenizedLine[0];
-                System.out.println(classKey);
-                System.out.println(tokenizedLine[0]);
+                // Remove the byte code class key from the ArrayList and store it in a string
+                // The ArrayList is now either empty or contains arguments for the byte code
+                String classKey = tokens.remove(0);
 
                 // Create new byte code object from class key
                 String className = CodeTable.getClassName(classKey);
                 Class byteCodeClass = Class.forName("interpreter.bytecode." + className);
                 ByteCode newByteCode = (ByteCode) byteCodeClass.getDeclaredConstructor().newInstance();
 
-                // Tokenize string of arguments if there are any
-                // Pass ArrayList of arguments to the byte code's init method
-                if (tokenizedLine.length > 1) {
-                    System.out.println(tokenizedLine[1]);
-                    ArrayList<String> arguments = new ArrayList<>(Arrays.asList(tokenizedLine[1].split(" ")));
-                    newByteCode.init(arguments);
-                }
+                // Pass ArrayList of arguments to the byte code's init method even if it's empty
+                newByteCode.init(tokens);
 
-                // Add new byte code object to the program's ArrayList of byte code objects
                 loadedProgram.addByteCode(newByteCode);
             }
         } catch (IOException e) {
