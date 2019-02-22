@@ -32,6 +32,8 @@ public class Program {
      * @param program Program object that holds a list of ByteCodes
      */
     public void resolveAddrs() {
-
+        for (int i = 0; i < program.size(); i++) {
+            System.out.println(getCode(i));
+        }
     }
 }

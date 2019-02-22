@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class ByteCodeLoader extends Object {
@@ -37,28 +39,42 @@ public class ByteCodeLoader extends Object {
 
         try {
             while ((byteCodeLine = byteSource.readLine()) != null) {
-                System.out.println(byteCodeLine);
-                String[] byteCodeTokens = byteCodeLine.split(" ");
+                // Tokenize line into byte code and arguments if there are any
+                // [0] = byte code class key, [1] = non-tokenized string of arguments if there are any
+                String[] tokenizedLine = byteCodeLine.split(" ", 2);
 
-                System.out.println(byteCodeTokens[0]);
-                String className = CodeTable.getClassName(byteCodeTokens[0]);
+                // Store byte code class key into string
+                String classKey = tokenizedLine[0];
+                System.out.println(classKey);
+                System.out.println(tokenizedLine[0]);
+
+                // Create new byte code object from class key
+                String className = CodeTable.getClassName(classKey);
                 Class byteCodeClass = Class.forName("interpreter.bytecode." + className);
-                ByteCode byteCode = (ByteCode) byteCodeClass.getDeclaredConstructor().newInstance();
-                System.out.println(byteCodeTokens.length);
+                ByteCode newByteCode = (ByteCode) byteCodeClass.getDeclaredConstructor().newInstance();
 
-                byteCode.init(byteCodeTokens);
+                // Tokenize string of arguments if there are any
+                // Pass ArrayList of arguments to the byte code's init method
+                if (tokenizedLine.length > 1) {
+                    System.out.println(tokenizedLine[1]);
+                    ArrayList<String> arguments = new ArrayList<>(Arrays.asList(tokenizedLine[1].split(" ")));
+                    newByteCode.init(arguments);
+                }
+
+                // Add new byte code object to the program's ArrayList of byte code objects
+                loadedProgram.addByteCode(newByteCode);
             }
         } catch (IOException e) {
-            System.err.println("Exception in ByteCodeLoader loadCodes() .readLine: " + e);
+            System.err.println("Exception in ByteCodeLoader.loadCodes() .readLine: " + e);
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.err.println("Exception in ByteCodeLoader loadCodes() Class.forName: " + e);
+            System.err.println("Exception in ByteCodeLoader.loadCodes() Class.forName: " + e);
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
-            System.err.println("Exception in ByteCodeLoader loadCodes() .getDeclaredConstructor: " + e);
+            System.err.println("Exception in ByteCodeLoader.loadCodes() .getDeclaredConstructor: " + e);
             e.printStackTrace();
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            System.err.println("Exception in ByteCodeLoader loadCodes() .newInstance(): " + e);
+            System.err.println("Exception in ByteCodeLoader.loadCodes() .newInstance(): " + e);
             e.printStackTrace();
         }
 
