@@ -57,16 +57,16 @@ public class ByteCodeLoader extends Object {
                 loadedProgram.addByteCode(newByteCode);
             }
         } catch (IOException e) {
-            System.err.println("Exception in ByteCodeLoader.loadCodes() .readLine: " + e);
+            System.out.println("Exception in ByteCodeLoader.loadCodes() .readLine: " + e);
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.err.println("Exception in ByteCodeLoader.loadCodes() Class.forName: " + e);
+            System.out.println("Exception in ByteCodeLoader.loadCodes() Class.forName: " + e);
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
-            System.err.println("Exception in ByteCodeLoader.loadCodes() .getDeclaredConstructor: " + e);
+            System.out.println("Exception in ByteCodeLoader.loadCodes() .getDeclaredConstructor: " + e);
             e.printStackTrace();
         } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            System.err.println("Exception in ByteCodeLoader.loadCodes() .newInstance(): " + e);
+            System.out.println("Exception in ByteCodeLoader.loadCodes() .newInstance(): " + e);
             e.printStackTrace();
         }
 
