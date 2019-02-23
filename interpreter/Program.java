@@ -12,6 +12,7 @@ public class Program {
     }
 
     // Courtesy of Jonathan Julian for giving me the idea of creating a separate constructor
+    // I initially had an addByteCode(ByteCode newByteCode) method but decided to go with the constructor
     public Program(ArrayList<ByteCode> loadedByteCodes) {
         program = loadedByteCodes;
     }

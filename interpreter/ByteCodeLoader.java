@@ -67,6 +67,7 @@ public class ByteCodeLoader extends Object {
             e.printStackTrace();
         }
 
+        // Using the new Program constructor courtesy of Jonathan Julian
         Program loadedProgram = new Program(loadedByteCodes);
         loadedProgram.resolveAddrs();
 
