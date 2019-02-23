@@ -34,7 +34,7 @@ public class ByteCodeLoader extends Object {
      *      the newly created ByteCode instance via the init function.
      */
     public Program loadCodes() {
-        Program loadedProgram = new Program();
+        ArrayList<ByteCode> loadedByteCodes = new ArrayList<>();
         String fileLine;
 
         try {
@@ -42,18 +42,16 @@ public class ByteCodeLoader extends Object {
                 // Tokenize line into an ArrayList of strings, the first token will be the byte code class key
                 ArrayList<String> tokens = new ArrayList<>(Arrays.asList(fileLine.split(" ")));
 
-                // Remove the byte code class key from the ArrayList and store it in a string
-                // The ArrayList is now either empty or contains arguments for the byte code
-                String classKey = tokens.remove(0);
-
-                // Create new byte code object from class key
-                Class byteCodeClass = Class.forName("interpreter.bytecode." + CodeTable.getClassName(classKey));
+                // Remove the byte code class key from the ArrayList
+                // Convert the byte code class key into a byte code class name
+                // Create new byte code object from class name
+                Class byteCodeClass = Class.forName("interpreter.bytecode." + CodeTable.getClassName(tokens.remove(0)));
                 ByteCode newByteCode = (ByteCode) byteCodeClass.getDeclaredConstructor().newInstance();
 
                 // Pass ArrayList of arguments to the byte code's init method even if it's empty
                 newByteCode.init(tokens);
 
-                loadedProgram.addByteCode(newByteCode);
+                loadedByteCodes.add(newByteCode);
             }
         } catch (IOException e) {
             System.out.println("Exception in ByteCodeLoader.loadCodes() .readLine: " + e);
@@ -69,6 +67,7 @@ public class ByteCodeLoader extends Object {
             e.printStackTrace();
         }
 
+        Program loadedProgram = new Program(loadedByteCodes);
         loadedProgram.resolveAddrs();
 
         return loadedProgram;

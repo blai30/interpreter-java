@@ -11,16 +11,17 @@ public class Program {
         program = new ArrayList<>();
     }
 
+    // Courtesy of Jonathan Julian for giving me the idea of creating a separate constructor
+    public Program(ArrayList<ByteCode> loadedByteCodes) {
+        program = loadedByteCodes;
+    }
+
     protected ByteCode getCode(int pc) {
         return this.program.get(pc);
     }
 
     public int getSize() {
         return this.program.size();
-    }
-
-    public void addByteCode(ByteCode newByteCode) {
-        program.add(newByteCode);
     }
 
     /**
