@@ -1,22 +1,27 @@
 package interpreter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import interpreter.bytecode.AddressLabel;
 import interpreter.bytecode.ByteCode;
+import interpreter.bytecode.LabelCode;
 
 public class Program {
 
     private ArrayList<ByteCode> program;
+    private HashMap<String, Integer> addresses;
 
     public Program() {
         program = new ArrayList<>();
+        addresses = new HashMap<>();
     }
 
     // Courtesy of Jonathan Julian for giving me the idea of creating a separate constructor
     // I initially had an addByteCode(ByteCode newByteCode) method but decided to go with the constructor for efficiency
     public Program(ArrayList<ByteCode> loadedByteCodes) {
         program = loadedByteCodes;
+        addresses = new HashMap<>();
     }
 
     protected ByteCode getCode(int pc) {
@@ -37,8 +42,16 @@ public class Program {
      */
     public void resolveAddrs() {
         for (int i = 0; i < program.size(); i++) {
-            if (getCode(i) instanceof AddressLabel) {
-                System.out.println(getCode(i));
+            if (program.get(i) instanceof LabelCode) {
+                addresses.put(((LabelCode) program.get(i)).getLabel(), i);
+            }
+        }
+
+        for (ByteCode bc : program) {
+            if (bc instanceof AddressLabel) {
+                // Matches the label in bc with the label in the hashmap and sets the same address
+                // bc.setAddress(addresses.get(bc.getLabel()));
+                ((AddressLabel) bc).setAddress(addresses.get(((AddressLabel) bc).getLabel()));
             }
         }
     }

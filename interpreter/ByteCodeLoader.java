@@ -34,6 +34,7 @@ public class ByteCodeLoader extends Object {
      *      the newly created ByteCode instance via the init function.
      */
     public Program loadCodes() {
+
         ArrayList<ByteCode> loadedByteCodes = new ArrayList<>();
         String fileLine;
 
