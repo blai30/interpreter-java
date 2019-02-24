@@ -4,7 +4,7 @@ import interpreter.VirtualMachine;
 
 import java.util.ArrayList;
 
-public class GotoCode extends ByteCode {
+public class GotoCode extends ByteCode implements AddressLabel {
     @Override
     public void init(ArrayList<String> args) {
 

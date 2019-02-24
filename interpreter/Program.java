@@ -1,6 +1,8 @@
 package interpreter;
 
 import java.util.ArrayList;
+
+import interpreter.bytecode.AddressLabel;
 import interpreter.bytecode.ByteCode;
 
 public class Program {
@@ -12,7 +14,7 @@ public class Program {
     }
 
     // Courtesy of Jonathan Julian for giving me the idea of creating a separate constructor
-    // I initially had an addByteCode(ByteCode newByteCode) method but decided to go with the constructor
+    // I initially had an addByteCode(ByteCode newByteCode) method but decided to go with the constructor for efficiency
     public Program(ArrayList<ByteCode> loadedByteCodes) {
         program = loadedByteCodes;
     }
@@ -35,7 +37,9 @@ public class Program {
      */
     public void resolveAddrs() {
         for (int i = 0; i < program.size(); i++) {
-            System.out.println(getCode(i));
+            if (getCode(i) instanceof AddressLabel) {
+                System.out.println(getCode(i));
+            }
         }
     }
 }

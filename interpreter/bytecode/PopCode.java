@@ -5,11 +5,11 @@ import interpreter.VirtualMachine;
 import java.util.ArrayList;
 
 public class PopCode extends ByteCode {
-    int levelsToPop;
+    private int levelsToPop;
 
     @Override
     public void init(ArrayList<String> args) {
-        levelsToPop = Integer.parseInt(args.get(0));
+        levelsToPop = Integer.parseInt(args.remove(0));
     }
 
     @Override
