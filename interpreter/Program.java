@@ -38,7 +38,7 @@ public class Program {
      * correct addresses so the VirtualMachine knows what to set the Program Counter(PC)
      * HINT: make note what type of data-stucture bytecodes are stored in.
      *
-     * @param program Program object that holds a list of ByteCodes
+//     * @param program Program object that holds a list of ByteCodes
      */
     public void resolveAddrs() {
         for (int i = 0; i < program.size(); i++) {
