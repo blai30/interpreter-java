@@ -17,8 +17,24 @@ public class VirtualMachine {
         this.program = program;
     }
 
+    public void halt() {
+
+    }
+
     public int popRunStack() {
         return runStack.pop();
+    }
+
+    public void pushPC(int pc) {
+        returnAddrs.push(pc);
+    }
+
+    public int popPC() {
+        return (int) returnAddrs.pop();
+    }
+
+    public void setDump(boolean flag) {
+        dumpFlag = flag;
     }
 
     public void executeProgram() {
@@ -26,10 +42,14 @@ public class VirtualMachine {
         runStack = new RunTimeStack();
         returnAddrs = new Stack<Integer>();
         isRunning = true;
-        while(isRunning) {
+        dumpFlag = false;
+        while (isRunning) {
             ByteCode code = program.getCode(pc);
             code.execute(this);
-            //runStack.dump(); // Used to dump runstack state.
+            if (dumpFlag) {
+                System.out.println(code);
+                runStack.dump(); // Used to dump runstack state.
+            }
             pc++;
         }
     }
