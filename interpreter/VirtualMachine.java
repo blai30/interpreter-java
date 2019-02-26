@@ -1,5 +1,6 @@
 package interpreter;
 
+import java.util.Arrays;
 import java.util.Stack;
 import interpreter.bytecode.ByteCode;
 
@@ -18,15 +19,23 @@ public class VirtualMachine {
     }
 
     public void halt() {
-
+        isRunning = false;
     }
 
     public int peek() {
         return runStack.peek();
     }
 
+    public void pushRunStack(Integer value) {
+        runStack.push(value);
+    }
+
     public int popRunStack() {
         return runStack.pop();
+    }
+
+    public void loadRunStack(Integer offset) {
+        runStack.load(offset);
     }
 
     public void popFrame() {
@@ -68,6 +77,8 @@ public class VirtualMachine {
         dumpFlag = false;
         while (isRunning) {
             ByteCode code = program.getCode(pc);
+            System.out.println(code); // FOR DEBUGGING
+            System.out.println(Arrays.toString(runStack.printArray()));
             code.execute(this);
             if (dumpFlag) {
                 System.out.println(code);
