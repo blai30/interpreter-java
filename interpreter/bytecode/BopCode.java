@@ -20,28 +20,39 @@ public class BopCode extends ByteCode {
 
         if (op.equals("+")) {
             vm.pushRunStack(op1 + op2);
-        } else if (op.equals("-")) {
+        }
+        else if (op.equals("-")) {
             vm.pushRunStack(op1 - op2);
-        } else if (op.equals("/")) {
+        }
+        else if (op.equals("/")) {
             vm.pushRunStack(op1 / op2);
-        } else if (op.equals("*")) {
+        }
+        else if (op.equals("*")) {
             vm.pushRunStack(op1 * op2);
-        } else if (op.equals("==")) {
+        }
+        else if (op.equals("==")) {
             vm.pushRunStack((op1 == op2) ? 1 : 0);
-        } else if (op.equals("!=")) {
+        }
+        else if (op.equals("!=")) {
             vm.pushRunStack((op1 != op2) ? 1 : 0);
-        } else if (op.equals("<=")) {
+        }
+        else if (op.equals("<=")) {
             vm.pushRunStack((op1 <= op2) ? 1 : 0);
-        } else if (op.equals(">")) {
+        }
+        else if (op.equals(">")) {
             vm.pushRunStack((op1 > op2) ? 1 : 0);
-        } else if (op.equals(">=")) {
+        }
+        else if (op.equals(">=")) {
             vm.pushRunStack((op1 >= op2) ? 1 : 0);
-        } else if (op.equals("<")) {
+        }
+        else if (op.equals("<")) {
             vm.pushRunStack((op1 < op2) ? 1 : 0);
-        } else if (op.equals("|")) {
-            vm.pushRunStack(op1 | op2);
-        } else if (op.equals("&")) {
-            vm.pushRunStack(op1 & op2);
+        }
+        else if (op.equals("|")) {
+            vm.pushRunStack(((op1 != 0) || (op2 != 0)) ? 1 : 0);
+        }
+        else if (op.equals("&")) {
+            vm.pushRunStack(((op1 != 0) && (op2 != 0)) ? 1 : 0);
         }
     }
 }

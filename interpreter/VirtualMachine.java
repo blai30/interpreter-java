@@ -18,6 +18,7 @@ public class VirtualMachine {
         this.program = program;
     }
 
+    // Terminate the program from running
     public void halt() {
         isRunning = false;
     }
