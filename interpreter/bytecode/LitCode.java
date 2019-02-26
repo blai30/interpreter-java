@@ -19,6 +19,6 @@ public class LitCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-
+        vm.pushRunStack(value);
     }
 }
