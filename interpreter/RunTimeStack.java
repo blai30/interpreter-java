@@ -41,7 +41,10 @@ public class RunTimeStack {
         // removes an item from the top of the stack and returns
         // it.
 
-        return runTimeStack.remove(runTimeStack.size() - 1);
+        if (runTimeStack.size() > 0) {
+            return runTimeStack.remove(runTimeStack.size() - 1);
+        }
+        return 0;
     }
 
     public void newFrameAt(int offset) {
