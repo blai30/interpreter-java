@@ -25,6 +25,10 @@ public class VirtualMachine {
         return runStack.pop();
     }
 
+    public void popFrame() {
+        runStack.popFrame();
+    }
+
     public int getPC() {
         return pc;
     }
@@ -39,6 +43,10 @@ public class VirtualMachine {
 
     public int popPC() {
         return (int) returnAddrs.pop();
+    }
+
+    public void store(int offset) {
+        runStack.store(offset);
     }
 
     public void setDump(boolean flag) {
