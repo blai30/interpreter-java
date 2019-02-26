@@ -16,7 +16,8 @@ public class CallCode extends ByteCode implements AddressLabel {
 
     @Override
     public void execute(VirtualMachine vm) {
-
+        vm.pushPC(vm.getPC());
+        vm.setPC(address - 1);
     }
 
     @Override
