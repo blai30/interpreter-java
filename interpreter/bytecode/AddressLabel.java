@@ -2,8 +2,8 @@ package interpreter.bytecode;
 
 public interface AddressLabel {
 
-    public String getLabel();
+    String getLabel();
 
-    public void setAddress(int newAddress);
+    void setAddress(int newAddress);
 
 }
