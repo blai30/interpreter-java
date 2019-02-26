@@ -41,10 +41,10 @@ public class RunTimeStack {
         // removes an item from the top of the stack and returns
         // it.
 
-        if (runTimeStack.size() > 0) {
-            return runTimeStack.remove(runTimeStack.size() - 1);
-        }
-        return 0;
+        int top = peek();
+        runTimeStack.remove(runTimeStack.size() - 1);
+
+        return top;
     }
 
     public void newFrameAt(int offset) {
@@ -52,7 +52,7 @@ public class RunTimeStack {
         // parameter offset is used to denote how many slots down
         // from the top of RuntimeStack for starting a new frame.
 
-        framePointer.add(runTimeStack.size() - offset);
+        framePointer.push(runTimeStack.size() - offset);
     }
 
     public void popFrame() {
@@ -63,10 +63,10 @@ public class RunTimeStack {
         // stack. It is assumed return values are at the top of
         // the stack.
 
-        Integer top = peek();
+        Integer top = pop();
         Integer bot = framePointer.pop();
 
-        for (int i = runTimeStack.size() - 1; i > bot + 1; i--) {
+        for (int i = bot; i < runTimeStack.size(); i++) {
             pop();
         }
 
@@ -79,9 +79,10 @@ public class RunTimeStack {
         // given offset in the current frame. The value stored is
         // returned.
 
-        runTimeStack.add(framePointer.peek() + offset, pop());
+        int top = pop();
+        runTimeStack.set(framePointer.peek() + offset, top);
 
-        return framePointer.peek() + offset;
+        return top;
     }
 
     public int load(int offset) {
@@ -105,6 +106,7 @@ public class RunTimeStack {
     }
 
 
+    // FOR DEBUGGING
     public Object[] printArray() {
         return runTimeStack.toArray();
     }
