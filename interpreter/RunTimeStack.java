@@ -92,7 +92,7 @@ public class RunTimeStack {
         // value and push it to the top of the stack. No values
         // should be removed with load.
 
-        return push(framePointer.peek() + offset);
+        return push(runTimeStack.get(framePointer.peek() + offset));
     }
 
     public Integer push(Integer val) {
