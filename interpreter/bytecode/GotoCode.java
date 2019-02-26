@@ -16,7 +16,7 @@ public class GotoCode extends ByteCode implements AddressLabel {
 
     @Override
     public void execute(VirtualMachine vm) {
-
+        vm.setPC(address);
     }
 
     @Override
