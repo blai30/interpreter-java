@@ -16,7 +16,7 @@ public class PopCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         for (int i = 0; i < levelsToPop; i++) {
-            int temp = vm.popRunStack();
+            vm.popRunStack();
         }
     }
 }
