@@ -19,7 +19,7 @@ public class StoreCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        Integer store = vm.peek();
-        vm.store(offset);
+        Integer storedValue = vm.peekRunStack();
+        vm.storeRunStack(offset);
     }
 }
