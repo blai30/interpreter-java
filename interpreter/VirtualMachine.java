@@ -78,10 +78,11 @@ public class VirtualMachine {
         isRunning = true;
         dumpFlag = false;
         while (isRunning) {
+            System.out.println(pc);
             ByteCode code = program.getCode(pc);
             System.out.println(code); // FOR DEBUGGING
-            System.out.println(Arrays.toString(runStack.printArray())); // FOR DEBUGGING
             code.execute(this);
+            System.out.println(Arrays.toString(runStack.printArray())); // FOR DEBUGGING
             if (dumpFlag) {
                 System.out.println(code);
                 runStack.dump(); // Used to dump runstack state.
