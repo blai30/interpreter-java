@@ -16,7 +16,7 @@ public class ReadCode extends ByteCode {
         Scanner userInput = new Scanner(System.in);
         Integer readInput;
         do {
-            System.out.println("Enter an Integer: ");
+            System.out.print("Enter an Integer: ");
             readInput = userInput.nextInt();
         } while (readInput < 0);
         vm.pushRunStack(readInput);
