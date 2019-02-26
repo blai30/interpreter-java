@@ -83,7 +83,7 @@ public class VirtualMachine {
         while (isRunning) {
             ByteCode code = program.getCode(pc);
             System.out.println(code); // FOR DEBUGGING
-            System.out.println(Arrays.toString(runStack.printArray()));
+            System.out.println(Arrays.toString(runStack.printArray())); // FOR DEBUGGING
             code.execute(this);
             if (dumpFlag) {
                 System.out.println(code);
