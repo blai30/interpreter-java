@@ -66,7 +66,7 @@ public class RunTimeStack {
         Integer top = peek();
         Integer bot = framePointer.pop();
 
-        for (int i = runTimeStack.size(); i > bot; i--) {
+        for (int i = runTimeStack.size() - 1; i > bot + 1; i--) {
             pop();
         }
 
@@ -103,5 +103,10 @@ public class RunTimeStack {
 
         return val;
     }
-    
+
+
+    public Object[] printArray() {
+        return runTimeStack.toArray();
+    }
+
 }
