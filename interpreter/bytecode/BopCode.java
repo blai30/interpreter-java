@@ -15,6 +15,33 @@ public class BopCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
+        int op2 = vm.popRunStack();
+        int op1 = vm.popRunStack();
 
+        if (op.equals("+")) {
+            vm.pushRunStack(op1 + op2);
+        } else if (op.equals("-")) {
+            vm.pushRunStack(op1 - op2);
+        } else if (op.equals("/")) {
+            vm.pushRunStack(op1 / op2);
+        } else if (op.equals("*")) {
+            vm.pushRunStack(op1 * op2);
+        } else if (op.equals("==")) {
+            vm.pushRunStack((op1 == op2) ? 1 : 0);
+        } else if (op.equals("!=")) {
+            vm.pushRunStack((op1 != op2) ? 1 : 0);
+        } else if (op.equals("<=")) {
+            vm.pushRunStack((op1 <= op2) ? 1 : 0);
+        } else if (op.equals(">")) {
+            vm.pushRunStack((op1 > op2) ? 1 : 0);
+        } else if (op.equals(">=")) {
+            vm.pushRunStack((op1 >= op2) ? 1 : 0);
+        } else if (op.equals("<")) {
+            vm.pushRunStack((op1 < op2) ? 1 : 0);
+        } else if (op.equals("|")) {
+            vm.pushRunStack(op1 | op2);
+        } else if (op.equals("&")) {
+            vm.pushRunStack(op1 & op2);
+        }
     }
 }
