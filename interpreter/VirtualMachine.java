@@ -25,8 +25,16 @@ public class VirtualMachine {
         return runStack.pop();
     }
 
-    public void pushPC(int pc) {
-        returnAddrs.push(pc);
+    public int getPC() {
+        return pc;
+    }
+
+    public void setPC(int value) {
+        pc = value;
+    }
+
+    public void pushPC(int value) {
+        returnAddrs.push(value);
     }
 
     public int popPC() {
