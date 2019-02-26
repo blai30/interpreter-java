@@ -23,7 +23,7 @@ public class VirtualMachine {
         isRunning = false;
     }
 
-    public int peek() {
+    public int peekRunStack() {
         return runStack.peek();
     }
 
@@ -39,20 +39,16 @@ public class VirtualMachine {
         runStack.load(offset);
     }
 
+    public void storeRunStack(int offset) {
+        runStack.store(offset);
+    }
+
     public void newFrameAt(int offset) {
         runStack.newFrameAt(offset);
     }
 
     public void popFrame() {
         runStack.popFrame();
-    }
-
-    public int getPC() {
-        return pc;
-    }
-
-    public void setPC(int value) {
-        pc = value;
     }
 
     public void pushPC(int value) {
@@ -66,8 +62,12 @@ public class VirtualMachine {
         return 0;
     }
 
-    public void store(int offset) {
-        runStack.store(offset);
+    public int getPC() {
+        return pc;
+    }
+
+    public void setPC(int value) {
+        pc = value;
     }
 
     public void setDump(boolean flag) {
