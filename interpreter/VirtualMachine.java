@@ -21,6 +21,10 @@ public class VirtualMachine {
 
     }
 
+    public int peek() {
+        return runStack.peek();
+    }
+
     public int popRunStack() {
         return runStack.pop();
     }
@@ -42,7 +46,10 @@ public class VirtualMachine {
     }
 
     public int popPC() {
-        return (int) returnAddrs.pop();
+        if (!returnAddrs.empty()) {
+            return (int) returnAddrs.pop();
+        }
+        return 0;
     }
 
     public void store(int offset) {

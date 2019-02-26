@@ -63,10 +63,10 @@ public class RunTimeStack {
         // stack. It is assumed return values are at the top of
         // the stack.
 
-        Integer top = peek();
-        Integer bot = framePointer.pop();
+        Integer top = (!runTimeStack.isEmpty()) ? peek() : 0;
+        Integer bot = (!framePointer.empty()) ? framePointer.pop() : 0;
 
-        for (int i = runTimeStack.size() - 1; i > bot + 1; i--) {
+        for (int i = runTimeStack.size() - 1; i >= bot; i--) {
             pop();
         }
 
