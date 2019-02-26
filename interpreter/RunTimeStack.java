@@ -29,6 +29,7 @@ public class RunTimeStack {
         // to include divisions between frames. If a frame is
         // empty, this must be shown as well.
 
+
     }
 
     public int peek() {
@@ -41,10 +42,7 @@ public class RunTimeStack {
         // removes an item from the top of the stack and returns
         // it.
 
-        int top = peek();
-        runTimeStack.remove(runTimeStack.size() - 1);
-
-        return top;
+        return runTimeStack.remove(runTimeStack.size() - 1);
     }
 
     public void newFrameAt(int offset) {
