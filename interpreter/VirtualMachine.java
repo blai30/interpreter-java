@@ -35,12 +35,12 @@ public class VirtualMachine {
         return runStack.pop();
     }
 
-    public void loadRunStack(Integer offset) {
-        runStack.load(offset);
-    }
-
     public void storeRunStack(int offset) {
         runStack.store(offset);
+    }
+
+    public void loadRunStack(Integer offset) {
+        runStack.load(offset);
     }
 
     public void newFrameAt(int offset) {
@@ -56,10 +56,7 @@ public class VirtualMachine {
     }
 
     public int popPC() {
-        if (!returnAddrs.empty()) {
-            return (int) returnAddrs.pop();
-        }
-        return 0;
+        return (int) returnAddrs.pop();
     }
 
     public int getPC() {
