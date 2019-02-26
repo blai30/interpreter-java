@@ -38,6 +38,10 @@ public class VirtualMachine {
         runStack.load(offset);
     }
 
+    public void newFrameAt(int offset) {
+        runStack.newFrameAt(offset);
+    }
+
     public void popFrame() {
         runStack.popFrame();
     }

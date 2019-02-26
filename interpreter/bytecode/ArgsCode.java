@@ -15,6 +15,6 @@ public class ArgsCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-
+        vm.newFrameAt(argsCount);
     }
 }
