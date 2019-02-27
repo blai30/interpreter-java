@@ -8,7 +8,6 @@ public class ReturnCode extends ByteCode {
 
     private String function = "";
     private String baseID = "";
-    private int returnValue;
 
     @Override
     public void init(ArrayList<String> args) {
@@ -26,6 +25,7 @@ public class ReturnCode extends ByteCode {
 
     @Override
     public void dump(VirtualMachine vm) {
-        System.out.println("RETURN " + function + "\t" + "exit " + baseID + ":" + returnValue);
+        System.out.print("RETURN " + function + "\t" + "exit " + baseID + ":");
+        vm.printReturn();
     }
 }

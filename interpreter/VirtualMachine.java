@@ -80,6 +80,10 @@ public class VirtualMachine {
         runStack.printArgs();
     }
 
+    public void printReturn() {
+        runStack.printReturn();
+    }
+
     public void executeProgram() {
         pc = 0;
         runStack = new RunTimeStack();

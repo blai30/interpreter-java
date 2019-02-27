@@ -161,8 +161,14 @@ public class RunTimeStack {
             for (int i = 0; i < argsCount; i++) {
                 args.add(runTimeStack.get(runTimeStack.size() - 1));
             }
-            System.out.println(args.toString().replace("[", "(").replace("]", ")"));
+            System.out.print(args.toString().replace("[", "(").replace("]", ")"));
         }
+        System.out.println();
+    }
+
+    // ReturnCode will call this method when dumping
+    public void printReturn() {
+        System.out.println();
     }
 
 }
