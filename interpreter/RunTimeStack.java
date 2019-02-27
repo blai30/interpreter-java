@@ -11,6 +11,8 @@ public class RunTimeStack {
     private ArrayList<Integer> runTimeStack;
     private Stack<Integer> framePointer;
 
+    private int argsCount;
+
     public RunTimeStack() {
         runTimeStack = new ArrayList<>();
         framePointer = new Stack<>();
@@ -74,10 +76,8 @@ public class RunTimeStack {
         // removes an item from the top of the stack and returns
         // it.
 
-        if (!runTimeStack.isEmpty()) {
-            if (framePointer.peek() < runTimeStack.size() - 1) {
+        if (!runTimeStack.isEmpty() && framePointer.peek() < runTimeStack.size()) {
                 return runTimeStack.remove(runTimeStack.size() - 1);
-            }
         }
 
         return 0;
@@ -119,7 +119,11 @@ public class RunTimeStack {
         // returned.
 
         int top = pop();
-        runTimeStack.set(framePointer.peek() + offset, top);
+        if (framePointer.peek() + offset != runTimeStack.size()) {
+            runTimeStack.set(framePointer.peek() + offset, top);
+        } else {
+            push(top);
+        }
 
         return top;
     }
@@ -142,6 +146,23 @@ public class RunTimeStack {
         runTimeStack.add(val);
 
         return val;
+    }
+
+
+    // Only used for dumping CallCode
+    public void setArgsCount(int count) {
+        argsCount = count;
+    }
+
+    // CallCode will call this method when dumping
+    public void printArgs() {
+        if (!runTimeStack.isEmpty()) {
+            ArrayList<Integer> args = new ArrayList<>();
+            for (int i = 0; i < argsCount; i++) {
+                args.add(runTimeStack.get(runTimeStack.size() - 1));
+            }
+            System.out.println(args.toString().replace("[", "(").replace("]", ")"));
+        }
     }
 
 }

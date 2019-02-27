@@ -1,6 +1,5 @@
 package interpreter;
 
-import java.util.Arrays;
 import java.util.Stack;
 import interpreter.bytecode.ByteCode;
 
@@ -73,6 +72,14 @@ public class VirtualMachine {
         dumpFlag = flag;
     }
 
+    public void setArgsCount(int count) {
+        runStack.setArgsCount(count);
+    }
+
+    public void printArgs() {
+        runStack.printArgs();
+    }
+
     public void executeProgram() {
         pc = 0;
         runStack = new RunTimeStack();
@@ -80,11 +87,10 @@ public class VirtualMachine {
         isRunning = true;
         dumpFlag = true;
         while (isRunning) {
-//            System.out.println(pc); // FOR DEBUGGING
             ByteCode code = program.getCode(pc);
             code.execute(this);
             if (dumpFlag) {
-                System.out.println(code);
+                code.dump(this);
                 runStack.dump(); // Used to dump runstack state.
             }
             pc++;
