@@ -56,7 +56,11 @@ public class VirtualMachine {
     }
 
     public int popPC() {
-        return (int) returnAddrs.pop();
+        if (!returnAddrs.isEmpty()) {
+            return (int) returnAddrs.pop();
+        }
+
+        return 0;
     }
 
     public int getPC() {
@@ -76,13 +80,11 @@ public class VirtualMachine {
         runStack = new RunTimeStack();
         returnAddrs = new Stack<Integer>();
         isRunning = true;
-        dumpFlag = false;
+        dumpFlag = true;
         while (isRunning) {
-            System.out.println(pc);
+//            System.out.println(pc); // FOR DEBUGGING
             ByteCode code = program.getCode(pc);
-            System.out.println(code); // FOR DEBUGGING
             code.execute(this);
-            System.out.println(Arrays.toString(runStack.printArray())); // FOR DEBUGGING
             if (dumpFlag) {
                 System.out.println(code);
                 runStack.dump(); // Used to dump runstack state.
