@@ -14,14 +14,12 @@ public class Program {
 
     public Program() {
         program = new ArrayList<>();
-        addresses = new HashMap<>();
     }
 
     // Courtesy of Jonathan Julian for giving me the idea of creating a separate constructor
     // I initially had an addByteCode(ByteCode newByteCode) method but decided to go with the constructor for efficiency
     public Program(ArrayList<ByteCode> loadedByteCodes) {
         program = loadedByteCodes;
-        addresses = new HashMap<>();
     }
 
     protected ByteCode getCode(int pc) {
@@ -41,6 +39,8 @@ public class Program {
 //     * @param program Program object that holds a list of ByteCodes
      */
     public void resolveAddrs() {
+        addresses = new HashMap<>();
+
         for (int i = 0; i < program.size(); i++) {
             if (program.get(i) instanceof LabelCode) {
                 addresses.put(((LabelCode) program.get(i)).getLabel(), i);
