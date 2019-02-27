@@ -46,10 +46,10 @@ public class ByteCodeLoader extends Object {
                 // Remove the byte code class key from the ArrayList
                 // Convert the byte code class key into a byte code class name
                 // Create new byte code object from class name
-                Class byteCodeClass = Class.forName("interpreter.bytecode." + CodeTable.getClassName(tokens.remove(0)));
+                Class byteCodeClass = Class.forName("interpreter.bytecode." + CodeTable.getClassName(tokens.get(0)));
                 ByteCode newByteCode = (ByteCode) byteCodeClass.getDeclaredConstructor().newInstance();
 
-                // Pass ArrayList of arguments to the byte code's init method even if it's empty
+                // Pass ArrayList of arguments to the byte code's init method even if it does not contain arguments
                 newByteCode.init(tokens);
 
                 loadedByteCodes.add(newByteCode);
