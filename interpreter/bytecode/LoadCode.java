@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class LoadCode extends ByteCode {
 
     private int offset;
-    private String variable;
+    private String variable = "";
 
     @Override
     public void init(ArrayList<String> args) {
@@ -24,6 +24,6 @@ public class LoadCode extends ByteCode {
 
     @Override
     public void dump(VirtualMachine vm) {
-
+        System.out.println("LOAD " + offset + " " + variable + "\t" + "<load " + variable + ">");
     }
 }

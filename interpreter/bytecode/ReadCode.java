@@ -24,6 +24,6 @@ public class ReadCode extends ByteCode {
 
     @Override
     public void dump(VirtualMachine vm) {
-
+        System.out.println("READ");
     }
 }

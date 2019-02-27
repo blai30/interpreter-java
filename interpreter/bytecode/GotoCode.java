@@ -21,7 +21,7 @@ public class GotoCode extends ByteCode implements AddressLabel {
 
     @Override
     public void dump(VirtualMachine vm) {
-
+        System.out.println("GOTO " + label);
     }
 
     @Override

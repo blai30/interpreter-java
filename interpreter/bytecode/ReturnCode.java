@@ -6,12 +6,15 @@ import java.util.ArrayList;
 
 public class ReturnCode extends ByteCode {
 
-    private String function;
+    private String function = "";
+    private String baseID = "";
+    private int returnValue;
 
     @Override
     public void init(ArrayList<String> args) {
         if (args.size() > 1) {
             function = args.get(1);
+            baseID = function.split("<<", 2)[0];
         }
     }
 
@@ -23,6 +26,6 @@ public class ReturnCode extends ByteCode {
 
     @Override
     public void dump(VirtualMachine vm) {
-
+        System.out.println("RETURN " + function + "\t" + "exit " + baseID + ":" + returnValue);
     }
 }

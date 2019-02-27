@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class LitCode extends ByteCode {
 
     private int value;
-    private String variable;
+    private String variable = "";
 
     @Override
     public void init(ArrayList<String> args) {
@@ -24,6 +24,6 @@ public class LitCode extends ByteCode {
 
     @Override
     public void dump(VirtualMachine vm) {
-
+        System.out.println("LIT " + value + " " + variable + "\t" + "int " + variable);
     }
 }

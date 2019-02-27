@@ -17,6 +17,6 @@ public class WriteCode extends ByteCode {
 
     @Override
     public void dump(VirtualMachine vm) {
-
+        System.out.println("WRITE");
     }
 }

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class StoreCode extends ByteCode {
 
     private int offset;
-    private String variable;
+    private String variable = "";
+    private Integer storedValue;
 
     @Override
     public void init(ArrayList<String> args) {
@@ -19,12 +20,12 @@ public class StoreCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        Integer storedValue = vm.peekRunStack();
+        storedValue = vm.peekRunStack();
         vm.storeRunStack(offset);
     }
 
     @Override
     public void dump(VirtualMachine vm) {
-
+        System.out.println("STORE " + offset + " " + variable + "\t" + variable + " = " + storedValue);
     }
 }
