@@ -1,6 +1,8 @@
 package interpreter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 // Comments for each method is taken directly from theinterpreter.pdf
@@ -29,20 +31,38 @@ public class RunTimeStack {
         // to include divisions between frames. If a frame is
         // empty, this must be shown as well.
 
-
+        if (framePointer.size() > 1) {
+            ArrayList<Integer> frameArrayList = new ArrayList<>(framePointer);
+//            System.err.println(Arrays.toString(frameArrayList.toArray()));
+            for (int startIndex = 0, i = 0; i < frameArrayList.size() - 1; startIndex = frameArrayList.get(i), i++) {
+//                System.err.println(startIndex + " :: " + i + " :: " + frameArrayList.get(i));
+                System.out.print(runTimeStack.subList(startIndex, frameArrayList.get(i)) + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println(Arrays.toString(runTimeStack.toArray()));
+        }
     }
 
     public int peek() {
         // returns the top of the stack without removing the item.
 
-        return runTimeStack.get(runTimeStack.size() - 1);
+        if (!runTimeStack.isEmpty()) {
+            return runTimeStack.get(runTimeStack.size() - 1);
+        }
+
+        return 0;
     }
 
     public int pop() {
         // removes an item from the top of the stack and returns
         // it.
 
-        return runTimeStack.remove(runTimeStack.size() - 1);
+        if (!runTimeStack.isEmpty()) {
+            return runTimeStack.remove(runTimeStack.size() - 1);
+        }
+
+        return 0;
     }
 
     public void newFrameAt(int offset) {
@@ -50,7 +70,9 @@ public class RunTimeStack {
         // parameter offset is used to denote how many slots down
         // from the top of RuntimeStack for starting a new frame.
 
-        framePointer.push(runTimeStack.size() - offset);
+        if (!runTimeStack.isEmpty()) {
+            framePointer.push(runTimeStack.size() - offset);
+        }
     }
 
     public void popFrame() {
@@ -62,10 +84,11 @@ public class RunTimeStack {
         // the stack.
 
         Integer top = pop();
-        Integer bot = framePointer.pop();
 
-        for (int i = bot; i < runTimeStack.size(); i++) {
-            pop();
+        if (framePointer.size() > 1) {
+            for (int i = framePointer.pop(); i < runTimeStack.size(); i++) {
+                pop();
+            }
         }
 
         push(top);
@@ -101,12 +124,6 @@ public class RunTimeStack {
         runTimeStack.add(val);
 
         return val;
-    }
-
-
-    // FOR DEBUGGING
-    public Object[] printArray() {
-        return runTimeStack.toArray();
     }
 
 }
