@@ -10,14 +10,19 @@ public class ReturnCode extends ByteCode {
 
     @Override
     public void init(ArrayList<String> args) {
-        if (!args.isEmpty()) {
-            function = args.get(0);
+        if (args.size() > 1) {
+            function = args.get(1);
         }
     }
 
     @Override
     public void execute(VirtualMachine vm) {
         vm.popFrame();
-        vm.setPC(vm.popPC());
+        vm.returnPC();
+    }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
     }
 }

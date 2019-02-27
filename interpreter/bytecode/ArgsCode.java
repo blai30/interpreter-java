@@ -10,11 +10,16 @@ public class ArgsCode extends ByteCode {
 
     @Override
     public void init(ArrayList<String> args) {
-        argsCount = Integer.parseInt(args.get(0));
+        argsCount = Integer.parseInt(args.get(1));
     }
 
     @Override
     public void execute(VirtualMachine vm) {
         vm.newFrameAt(argsCount);
+    }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
     }
 }

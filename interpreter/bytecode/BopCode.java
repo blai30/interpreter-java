@@ -10,7 +10,7 @@ public class BopCode extends ByteCode {
 
     @Override
     public void init(ArrayList<String> args) {
-        op = args.get(0);
+        op = args.get(1);
     }
 
     @Override
@@ -57,5 +57,10 @@ public class BopCode extends ByteCode {
             // Both operands are false
             vm.pushRunStack(((op1 != 0) && (op2 != 0)) ? 1 : 0);
         }
+    }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
     }
 }

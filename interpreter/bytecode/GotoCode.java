@@ -11,12 +11,17 @@ public class GotoCode extends ByteCode implements AddressLabel {
 
     @Override
     public void init(ArrayList<String> args) {
-        label = args.get(0);
+        label = args.get(1);
     }
 
     @Override
     public void execute(VirtualMachine vm) {
         vm.setPC(address);
+    }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
     }
 
     @Override

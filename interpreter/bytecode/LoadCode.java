@@ -11,14 +11,19 @@ public class LoadCode extends ByteCode {
 
     @Override
     public void init(ArrayList<String> args) {
-        offset = Integer.parseInt(args.get(0));
-        if (args.size() > 1) {
-            variable = args.get(1);
+        offset = Integer.parseInt(args.get(1));
+        if (args.size() > 2) {
+            variable = args.get(2);
         }
     }
 
     @Override
     public void execute(VirtualMachine vm) {
         vm.loadRunStack(offset);
+    }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
     }
 }

@@ -10,11 +10,16 @@ public class DumpCode extends ByteCode {
 
     @Override
     public void init(ArrayList<String> args) {
-        dump = args.get(0).equals("ON");
+        dump = args.get(1).equals("ON");
     }
 
     @Override
     public void execute(VirtualMachine vm) {
 //        vm.setDump(dump);
+    }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
     }
 }

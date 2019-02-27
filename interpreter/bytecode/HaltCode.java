@@ -14,4 +14,9 @@ public class HaltCode extends ByteCode {
     public void execute(VirtualMachine vm) {
         vm.halt();
     }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
+    }
 }

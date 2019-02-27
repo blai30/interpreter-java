@@ -21,4 +21,9 @@ public class ReadCode extends ByteCode {
         } while (readInput < 0);
         vm.pushRunStack(readInput);
     }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
+    }
 }

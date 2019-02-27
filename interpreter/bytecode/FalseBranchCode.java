@@ -11,7 +11,7 @@ public class FalseBranchCode extends ByteCode implements AddressLabel {
 
     @Override
     public void init(ArrayList<String> args) {
-        label = args.get(0);
+        label = args.get(1);
     }
 
     @Override
@@ -19,6 +19,11 @@ public class FalseBranchCode extends ByteCode implements AddressLabel {
         if (vm.popRunStack() == 0) {
             vm.setPC(address);
         }
+    }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
     }
 
     @Override

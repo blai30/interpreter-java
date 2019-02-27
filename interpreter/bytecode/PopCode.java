@@ -10,7 +10,7 @@ public class PopCode extends ByteCode {
 
     @Override
     public void init(ArrayList<String> args) {
-        levelsToPop = Integer.parseInt(args.get(0));
+        levelsToPop = Integer.parseInt(args.get(1));
     }
 
     @Override
@@ -18,5 +18,10 @@ public class PopCode extends ByteCode {
         for (int i = 0; i < levelsToPop; i++) {
             vm.popRunStack();
         }
+    }
+
+    @Override
+    public void dump(VirtualMachine vm) {
+
     }
 }
