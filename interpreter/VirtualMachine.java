@@ -55,16 +55,14 @@ public class VirtualMachine {
         returnAddrs.push(value);
     }
 
-    public int popPC() {
+    public void returnPC() {
         if (!returnAddrs.isEmpty()) {
-            return (int) returnAddrs.pop();
+            setPC((int) returnAddrs.pop());
         }
-
-        return 0;
     }
 
-    public int getPC() {
-        return pc;
+    public void savePC() {
+        pushPC(pc);
     }
 
     public void setPC(int value) {
