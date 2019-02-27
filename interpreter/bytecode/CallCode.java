@@ -24,8 +24,9 @@ public class CallCode extends ByteCode implements AddressLabel {
 
     @Override
     public void dump(VirtualMachine vm) {
-        System.out.print("CALL " + label + "\t" + baseID);
+        System.out.print("CALL " + label + "\t" + baseID + "(");
         vm.printArgs();
+        System.out.println(")");
     }
 
     @Override

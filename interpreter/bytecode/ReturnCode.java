@@ -26,6 +26,7 @@ public class ReturnCode extends ByteCode {
     @Override
     public void dump(VirtualMachine vm) {
         System.out.print("RETURN " + function + "\t" + "exit " + baseID + ":");
-        vm.printReturn();
+        vm.printArgs();
+        System.out.println();
     }
 }
