@@ -31,17 +31,33 @@ public class RunTimeStack {
         // to include divisions between frames. If a frame is
         // empty, this must be shown as well.
 
+        System.err.println(Arrays.toString(framePointer.toArray())); // FOR DEBUGGING
+        System.err.println(Arrays.toString(runTimeStack.toArray())); // FOR DEBUGGING
+//        if (framePointer.size() > 1) {
+//            // Clone framePointer stack to ArrayList
+//            ArrayList<Integer> frameArrayList = new ArrayList<>(framePointer);
+//            int startIndex = 0;
+//            for (int i = 1; i < frameArrayList.size(); i++) {
+//                // Print from index to framePointer
+//                System.out.print(runTimeStack.subList(startIndex, frameArrayList.get(i)) + " ");
+//                // index cannot go below 0
+//                startIndex = (frameArrayList.get(i) - 1 < 0) ? 0 : frameArrayList.get(i) + 1;
+//            }
+//            // Print from framePointer to the end
+//            System.out.println(runTimeStack.subList(startIndex + 1, runTimeStack.size()));
+//        } else {
+//            System.out.println(Arrays.toString(runTimeStack.toArray()));
+//        }
+
+        ArrayList<Integer> frameList = new ArrayList<>(framePointer);
+        int index = 0;
         if (framePointer.size() > 1) {
-            ArrayList<Integer> frameArrayList = new ArrayList<>(framePointer);
-//            System.err.println(Arrays.toString(frameArrayList.toArray()));
-            for (int startIndex = 0, i = 0; i < frameArrayList.size() - 1; startIndex = frameArrayList.get(i), i++) {
-//                System.err.println(startIndex + " :: " + i + " :: " + frameArrayList.get(i));
-                System.out.print(runTimeStack.subList(startIndex, frameArrayList.get(i)) + " ");
+            for (int i = 0; i < framePointer.size(); i++) {
+                System.out.print(runTimeStack.subList(index, frameList.get(i)) + " ");
+                index = frameList.get(i);
             }
-            System.out.println();
-        } else {
-            System.out.println(Arrays.toString(runTimeStack.toArray()));
         }
+        System.out.println(runTimeStack.subList(index, runTimeStack.size()));
     }
 
     public int peek() {

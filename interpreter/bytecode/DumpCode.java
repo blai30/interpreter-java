@@ -15,6 +15,6 @@ public class DumpCode extends ByteCode {
 
     @Override
     public void execute(VirtualMachine vm) {
-        vm.setDump(dump);
+//        vm.setDump(dump);
     }
 }
