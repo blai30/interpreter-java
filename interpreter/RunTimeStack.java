@@ -31,8 +31,8 @@ public class RunTimeStack {
         // to include divisions between frames. If a frame is
         // empty, this must be shown as well.
 
-        System.err.println(Arrays.toString(framePointer.toArray())); // FOR DEBUGGING
-        System.err.println(Arrays.toString(runTimeStack.toArray())); // FOR DEBUGGING
+        System.err.println("frm: " + Arrays.toString(framePointer.toArray())); // FOR DEBUGGING
+        System.err.println("run: " + Arrays.toString(runTimeStack.toArray())); // FOR DEBUGGING
 //        if (framePointer.size() > 1) {
 //            // Clone framePointer stack to ArrayList
 //            ArrayList<Integer> frameArrayList = new ArrayList<>(framePointer);
@@ -75,7 +75,9 @@ public class RunTimeStack {
         // it.
 
         if (!runTimeStack.isEmpty()) {
-            return runTimeStack.remove(runTimeStack.size() - 1);
+            if (framePointer.peek() < runTimeStack.size() - 1) {
+                return runTimeStack.remove(runTimeStack.size() - 1);
+            }
         }
 
         return 0;
