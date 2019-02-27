@@ -168,7 +168,7 @@ public class RunTimeStack {
 
     // ReturnCode will call this method when dumping
     public void printReturn() {
-        System.out.println();
+        System.out.println(peek());
     }
 
 }
