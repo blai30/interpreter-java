@@ -4,6 +4,13 @@ import interpreter.VirtualMachine;
 
 import java.util.ArrayList;
 
+/**
+ * ByteCode: GOTO
+ * GOTO <label>
+ *
+ * Example:
+ * GOTO zyx<<3>>
+ */
 public class GotoCode extends ByteCode implements AddressLabel {
 
     private String label;

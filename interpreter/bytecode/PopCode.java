@@ -4,6 +4,14 @@ import interpreter.VirtualMachine;
 
 import java.util.ArrayList;
 
+/**
+ * ByteCode: POP
+ * POP n: pop the top n levels of the runtime stack
+ *
+ * Example:
+ * POP 5
+ * POP 0
+ */
 public class PopCode extends ByteCode {
 
     private int levelsToPop;

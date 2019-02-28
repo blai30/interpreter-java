@@ -4,6 +4,18 @@ import interpreter.VirtualMachine;
 
 import java.util.ArrayList;
 
+/**
+ * ByteCode: BOP
+ * BOP <binary op> , pop top 2 levels of the stack and perform the indicated
+ * operation , operations are + - / * == != <= > >= < | &
+ * | and & are logical operators not bitwise operators. Lower level is the first operand:
+ * Eg: <second-level> + <top-level>
+ *
+ * Example:
+ * BOP +
+ * BOP –
+ * BOP /
+ */
 public class BopCode extends ByteCode {
 
     private String op;

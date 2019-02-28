@@ -4,6 +4,16 @@ import interpreter.VirtualMachine;
 
 import java.util.ArrayList;
 
+/**
+ * ByteCode: LOAD
+ * LOAD n <id> ; push the value in the slot which is offset n from the
+ * start of the frame onto the top of the stack; <id> is used as a comment
+ * and for dumping, it’s the variable name where the data is loaded.
+ *
+ * Example:
+ * LOAD 3
+ * LOAD 2 i
+ */
 public class LoadCode extends ByteCode {
 
     private int offset;

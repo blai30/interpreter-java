@@ -4,6 +4,17 @@ import interpreter.VirtualMachine;
 
 import java.util.ArrayList;
 
+/**
+ * ByteCode: RETURN
+ * RETURN <funcname>; Return from the current function; <funcname> is
+ * used as a comment to indicate the current function.
+ * RETURN is generated for intrinsic functions.
+ *
+ * Example:
+ * RETURN f<<2>>
+ * RETURN
+ * Note: returns with labels functions EXECUTE THE same as returns without labels.
+ */
 public class ReturnCode extends ByteCode {
 
     private String function = "";

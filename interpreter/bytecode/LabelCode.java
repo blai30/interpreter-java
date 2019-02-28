@@ -4,6 +4,14 @@ import interpreter.VirtualMachine;
 
 import java.util.ArrayList;
 
+/**
+ * ByteCode: LABEL
+ * LABEL <label>; target for branches;(FALSEBRANCH, GOTO and CALL)
+ *
+ * Example:
+ * LABEL xyz<<3>>
+ * LABEL Read
+ */
 public class LabelCode extends ByteCode {
 
     private String label;
