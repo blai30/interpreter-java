@@ -35,26 +35,11 @@ public class RunTimeStack {
 
         System.err.println("frm: " + Arrays.toString(framePointer.toArray())); // FOR DEBUGGING
         System.err.println("run: " + Arrays.toString(runTimeStack.toArray())); // FOR DEBUGGING
-//        if (framePointer.size() > 1) {
-//            // Clone framePointer stack to ArrayList
-//            ArrayList<Integer> frameArrayList = new ArrayList<>(framePointer);
-//            int startIndex = 0;
-//            for (int i = 1; i < frameArrayList.size(); i++) {
-//                // Print from index to framePointer
-//                System.out.print(runTimeStack.subList(startIndex, frameArrayList.get(i)) + " ");
-//                // index cannot go below 0
-//                startIndex = (frameArrayList.get(i) - 1 < 0) ? 0 : frameArrayList.get(i) + 1;
-//            }
-//            // Print from framePointer to the end
-//            System.out.println(runTimeStack.subList(startIndex + 1, runTimeStack.size()));
-//        } else {
-//            System.out.println(Arrays.toString(runTimeStack.toArray()));
-//        }
 
         ArrayList<Integer> frameList = new ArrayList<>(framePointer);
         int index = 0;
         if (framePointer.size() > 1) {
-            for (int i = 0; i < framePointer.size(); i++) {
+            for (int i = 1; i < framePointer.size(); i++) {
                 System.out.print(runTimeStack.subList(index, frameList.get(i)) + " ");
                 index = frameList.get(i);
             }
@@ -65,7 +50,7 @@ public class RunTimeStack {
     public int peek() {
         // returns the top of the stack without removing the item.
 
-        if (!runTimeStack.isEmpty()) {
+        if (runTimeStack.size() > 0) {
             return runTimeStack.get(runTimeStack.size() - 1);
         }
 
@@ -76,8 +61,12 @@ public class RunTimeStack {
         // removes an item from the top of the stack and returns
         // it.
 
-        if (!runTimeStack.isEmpty() && framePointer.peek() < runTimeStack.size()) {
+        if (!framePointer.isEmpty()) {
+            if (!runTimeStack.isEmpty() && framePointer.peek() < runTimeStack.size()) {
                 return runTimeStack.remove(runTimeStack.size() - 1);
+            }
+        } else if (!runTimeStack.isEmpty()) {
+            return runTimeStack.remove(runTimeStack.size() - 1);
         }
 
         return 0;
@@ -88,9 +77,7 @@ public class RunTimeStack {
         // parameter offset is used to denote how many slots down
         // from the top of RuntimeStack for starting a new frame.
 
-        if (!runTimeStack.isEmpty()) {
-            framePointer.push(runTimeStack.size() - offset);
-        }
+        framePointer.push(runTimeStack.size() - offset);
     }
 
     public void popFrame() {
@@ -103,7 +90,7 @@ public class RunTimeStack {
 
         Integer top = pop();
 
-        if (framePointer.size() > 1) {
+        if (!framePointer.isEmpty()) {
             for (int i = framePointer.pop(); i < runTimeStack.size(); i++) {
                 pop();
             }
@@ -118,12 +105,10 @@ public class RunTimeStack {
         // given offset in the current frame. The value stored is
         // returned.
 
-        int top = pop();
-        if (framePointer.peek() + offset != runTimeStack.size()) {
-            runTimeStack.set(framePointer.peek() + offset, top);
-        } else {
-            push(top);
-        }
+        // If storing to the same index as what was just popped, must peek first
+        Integer top = peek();
+        runTimeStack.set((!framePointer.isEmpty()) ? framePointer.peek() + offset : offset, top);
+        pop();
 
         return top;
     }
