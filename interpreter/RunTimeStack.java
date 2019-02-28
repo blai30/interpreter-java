@@ -33,8 +33,8 @@ public class RunTimeStack {
         // to include divisions between frames. If a frame is
         // empty, this must be shown as well.
 
-        System.err.println("frm: " + Arrays.toString(framePointer.toArray())); // FOR DEBUGGING
-        System.err.println("run: " + Arrays.toString(runTimeStack.toArray())); // FOR DEBUGGING
+//        System.err.println("frm: " + Arrays.toString(framePointer.toArray())); // FOR DEBUGGING
+//        System.err.println("run: " + Arrays.toString(runTimeStack.toArray())); // FOR DEBUGGING
 
         ArrayList<Integer> frameList = new ArrayList<>(framePointer);
         int index = 0;
