@@ -61,6 +61,7 @@ public class RunTimeStack {
         // removes an item from the top of the stack and returns
         // it.
 
+        // Prevent popping past the frame boundary
         if (!framePointer.isEmpty()) {
             if (!runTimeStack.isEmpty() && framePointer.peek() < runTimeStack.size()) {
                 return runTimeStack.remove(runTimeStack.size() - 1);
@@ -139,7 +140,7 @@ public class RunTimeStack {
         argsCount = count;
     }
 
-    // CallCode will call this method when dumping
+    // CallCode and ReturnCode will call this method when dumping
     public void printArgs() {
         if (!runTimeStack.isEmpty()) {
             ArrayList<Integer> args = new ArrayList<>();
