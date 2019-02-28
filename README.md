@@ -6,4 +6,5 @@
 
 ## Student Email : blai2@mail.sfsu.edu
 
-### Java Doc comments in byte code classes and runtime stack class are taken from theinterpreter.pdf. Credit goes to the authot of theinterpreter.pdf
+### Java Doc comments written in ByteCode classes and RunTimeStack class are taken from theinterpreter.pdf
+### Credit goes to the author of theinterpreter.pdf
