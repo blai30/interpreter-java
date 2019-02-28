@@ -14,11 +14,18 @@ public class ReadCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         Scanner userInput = new Scanner(System.in);
-        Integer readInput;
+        Integer readInput = null;
+
+        // Continuously prompt user for input until a valid Integer is entered
         do {
-            System.out.print("Enter an Integer: ");
-            readInput = userInput.nextInt();
-        } while (readInput < 0);
+            try {
+                System.out.print("Enter an Integer: ");
+                readInput = Integer.parseInt(userInput.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input.");
+            }
+        } while (readInput == null);
+
         vm.pushRunStack(readInput);
     }
 
