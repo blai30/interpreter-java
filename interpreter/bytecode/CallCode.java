@@ -23,13 +23,14 @@ public class CallCode extends ByteCode implements AddressLabel {
     @Override
     public void init(ArrayList<String> args) {
         label = args.get(1);
-        baseID = label.split("<<", 2)[0];
+        baseID = args.get(1).split("<<", 2)[0];
     }
 
     @Override
     public void execute(VirtualMachine vm) {
         vm.savePC();
-        vm.setPC(address);
+        // Offset by 1 to allow printing during dump
+        vm.setPC(address - 1);
     }
 
     @Override

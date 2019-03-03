@@ -25,7 +25,8 @@ public class FalseBranchCode extends ByteCode implements AddressLabel {
     @Override
     public void execute(VirtualMachine vm) {
         if (vm.popRunStack() == 0) {
-            vm.setPC(address);
+            // Offset by 1 to allow printing during dump
+            vm.setPC(address - 1);
         }
     }
 

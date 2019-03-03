@@ -24,7 +24,7 @@ public class ReturnCode extends ByteCode {
     public void init(ArrayList<String> args) {
         if (args.size() > 1) {
             function = args.get(1);
-            baseID = function.split("<<", 2)[0];
+            baseID = args.get(1).split("<<", 2)[0];
         }
     }
 
