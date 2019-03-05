@@ -37,6 +37,7 @@ public class ReturnCode extends ByteCode {
     @Override
     public void dump(VirtualMachine vm) {
         System.out.print("RETURN " + function + "\t" + "exit " + baseID + ":");
+        vm.setArgsCount(1); // Return should print only one value when dumping
         vm.printArgs();
         System.out.println();
     }

@@ -30,11 +30,11 @@ public class ArgsCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         vm.newFrameAt(argsCount);
-        vm.setArgsCount(argsCount); // Only used for dumping CallCode
     }
 
     @Override
     public void dump(VirtualMachine vm) {
         System.out.println("ARGS " + argsCount);
+        vm.setArgsCount(argsCount); // Only used for dumping CallCode
     }
 }

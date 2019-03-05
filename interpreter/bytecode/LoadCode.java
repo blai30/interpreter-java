@@ -34,6 +34,10 @@ public class LoadCode extends ByteCode {
 
     @Override
     public void dump(VirtualMachine vm) {
-        System.out.println("LOAD " + offset + " " + variable + "\t" + "<load " + variable + ">");
+        System.out.print("LOAD " + offset);
+        if (!variable.equals("")) {
+            System.out.print(" " + variable + "\t" + "<load " + variable + ">");
+        }
+        System.out.println();
     }
 }

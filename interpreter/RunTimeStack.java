@@ -10,6 +10,7 @@ public class RunTimeStack {
     private ArrayList<Integer> runTimeStack;
     private Stack<Integer> framePointer;
 
+    // Used for dumping CallCode and ReturnCode
     private int argsCount;
 
     public RunTimeStack() {
@@ -155,11 +156,12 @@ public class RunTimeStack {
     // CallCode and ReturnCode will call this method when dumping
     public void printArgs() {
         if (!runTimeStack.isEmpty()) {
-            ArrayList<Integer> args = new ArrayList<>();
             for (int i = 0; i < argsCount; i++) {
-                args.add(runTimeStack.get(runTimeStack.size() - 1));
+                System.out.print(runTimeStack.get(runTimeStack.size() - argsCount + i));
+                if (i != argsCount - 1) {
+                    System.out.print(", ");
+                }
             }
-            System.out.print(args.toString().replace("[", "").replace("]", ""));
         }
     }
 

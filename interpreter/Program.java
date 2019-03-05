@@ -10,7 +10,6 @@ import interpreter.bytecode.LabelCode;
 public class Program {
 
     private ArrayList<ByteCode> program;
-    private HashMap<String, Integer> addresses;
 
     public Program() {
         program = new ArrayList<>();
@@ -39,7 +38,7 @@ public class Program {
 //     * @param program Program object that holds a list of ByteCodes
      */
     public void resolveAddrs() {
-        addresses = new HashMap<>();
+        HashMap<String, Integer> addresses = new HashMap<>();
 
         for (int i = 0; i < program.size(); i++) {
             if (program.get(i) instanceof LabelCode) {
