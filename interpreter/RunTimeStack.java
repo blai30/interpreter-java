@@ -32,15 +32,14 @@ public class RunTimeStack {
      * empty, this must be shown as well.
      */
     public void dump() {
-//        System.err.println("frm: " + Arrays.toString(framePointer.toArray())); // FOR DEBUGGING
-//        System.err.println("run: " + Arrays.toString(runTimeStack.toArray())); // FOR DEBUGGING
+//        System.err.println("fps: " + Arrays.toString(framePointer.toArray())); // FOR DEBUGGING
+//        System.err.println("rts: " + Arrays.toString(runTimeStack.toArray())); // FOR DEBUGGING
 
-        ArrayList<Integer> frameList = new ArrayList<>(framePointer);
         int index = 0;
         if (framePointer.size() > 1) {
             for (int i = 1; i < framePointer.size(); i++) {
-                System.out.print(runTimeStack.subList(index, frameList.get(i)) + " ");
-                index = frameList.get(i);
+                System.out.print(runTimeStack.subList(index, framePointer.get(i)) + " ");
+                index = framePointer.get(i);
             }
         }
         System.out.println(runTimeStack.subList(index, runTimeStack.size()) + "\n");
