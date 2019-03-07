@@ -40,6 +40,7 @@ public class Program {
     public void resolveAddrs() {
         HashMap<String, Integer> addresses = new HashMap<>();
 
+        // Store addresses of labels in HashMap
         for (int i = 0; i < program.size(); i++) {
             if (program.get(i) instanceof LabelCode) {
                 addresses.put(((LabelCode) program.get(i)).getLabel(), i);

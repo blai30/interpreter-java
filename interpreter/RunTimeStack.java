@@ -154,6 +154,7 @@ public class RunTimeStack {
     }
 
     // CallCode and ReturnCode will call this method when dumping
+    // This method prints the args used in CallCode or the result received from ReturnCode
     public void printArgs() {
         if (!runTimeStack.isEmpty()) {
             for (int i = 0; i < argsCount; i++) {
