@@ -86,7 +86,7 @@ public class VirtualMachine {
         runStack = new RunTimeStack();
         returnAddrs = new Stack<Integer>();
         isRunning = true;
-        dumpFlag = true;
+        dumpFlag = false;
         while (isRunning) {
             ByteCode code = program.getCode(pc);
             code.execute(this);
