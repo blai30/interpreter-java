@@ -87,15 +87,20 @@ public class VirtualMachine {
         returnAddrs = new Stack<Integer>();
         isRunning = true;
         dumpFlag = false;
+
         while (isRunning) {
             ByteCode code = program.getCode(pc);
             code.execute(this);
+
+            // DumpCode does not get dumped and does not dump runStack state
             if (dumpFlag && !(code instanceof DumpCode)) {
-                code.dump(this);
+                code.dump(this); // Dumping byte code happens after execute
                 runStack.dump(); // Used to dump runstack state.
             }
+
             pc++;
         }
+
     }
 
 }
