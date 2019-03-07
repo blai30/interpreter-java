@@ -2,6 +2,7 @@ package interpreter;
 
 import java.util.Stack;
 import interpreter.bytecode.ByteCode;
+import interpreter.bytecode.DumpCode;
 
 public class VirtualMachine {
 
@@ -89,7 +90,7 @@ public class VirtualMachine {
         while (isRunning) {
             ByteCode code = program.getCode(pc);
             code.execute(this);
-            if (dumpFlag) {
+            if (dumpFlag && !(code instanceof DumpCode)) {
                 code.dump(this);
                 runStack.dump(); // Used to dump runstack state.
             }
