@@ -1,10 +1,6 @@
 # CSC 413 - Project Two
 
-## Student Name  : Brian Lai
-
-## Student ID    : 916818167
-
-## Student Email : blai2@mail.sfsu.edu
+## SFSU CSC 413
 
 ## File Structure
 ```css
